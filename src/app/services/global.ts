@@ -1,5 +1,5 @@
 export var global = {
-    url: './backEnd/public/',
+    url: 'http://localhost/Proyecto1/backEnd',
 
     htmlEntities: function(str) {
         return String(str).replace('&ntilde;', 'ñ')

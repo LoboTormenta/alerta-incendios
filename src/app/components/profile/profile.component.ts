@@ -120,9 +120,4 @@ export class ProfileComponent implements OnInit, DoCheck {
   
 }
 
-function closeModal(name){
-  $("#"+name).modal('hide');
-  // I added the next line
-  $('.modal-backdrop').hide();
-}
 

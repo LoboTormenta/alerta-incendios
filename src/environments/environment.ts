@@ -5,7 +5,7 @@
 export const environment = {
   production: true,
 
-  apiUrl : './backEnd/public/',
+  apiUrl : 'http://localhost/Proyecto1/backEnd',
 
   firebase: {
     apiKey: 'AIzaSyBU5p00Q7nm6JUw4aF4LxAFsRA-ROB3Kts',
