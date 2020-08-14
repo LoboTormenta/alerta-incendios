@@ -1,0 +1,53 @@
+<div class=""col-md-10 *ngIf="!post">
+    Cargando.....
+    
+</div>
+
+<hr>
+
+<div class="col-md-12" *ngIf="post">
+
+    <h1>{{post.title}}</h1>
+
+<p>
+    {{post?.category.name}} - <a [routerLink]="['/perfil', post.user.id]">
+    
+    {{post?.user.name + '' + post?.user.surname}}</a></p>
+    
+    <h1>{{post?.title}}</h1>
+<hr>
+    <p [innerHTML]="post.content">{{post?.content}}</p>
+<hr>
+
+
+
+
+    <!-- <img src="{{apiUrl + '/post/image/' + post.image}}" class="avatar_edit"/> -->
+
+
+</div>
+
+
+
+<div class=""col-md-10 *ngIf="!post">
+    Cargando.....
+    
+</div>
+
+<div class="informacion mt-5 mb-5" *ngIf="post">
+
+
+
+
+ 
+
+
+                
+                <img id="myimage" src="{{apiUrl + '/post/image/' + post.image}}" width="1600" height="900"  class="d-block w-100" class="img-fluid">
+            
+            
+   
+</div>
+
+
+

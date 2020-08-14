@@ -1,0 +1,109 @@
+<!-- Barra de navegación con los links hacia las diferentes paginas -->
+
+<nav class="navbar navbar-expand-lg navbar-default bg-default">
+
+    <a class="navbar-brand" href="http://lig-corenadr.com.mx">
+        <img src="./assets/img/altepetl1.png" width="120px" height="120px" alt="" loading="lazy">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item active">
+                <a class="nav-link" [routerLink]="['/home']" routerLinkActive="router-link-active">Inicio</a>
+            </li>
+
+            <li class="nav-item an fadeIn slow" *ngFor="let category of categories" routerLinkActive="active">
+                <a class="nav-link animated fadeIn slow" [routerLink]="['/categoria', category.id]" routerLinkActive="router-link-active">{{category.name}}</a>
+            </li>
+
+
+
+            <!-- 
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['semana1']">Inicio</a>
+            </li>
+         
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['cierredia']">Informe de incendios confirmados</a>
+            </li>
+
+            <li class="nav-item" routerLinkActive="active" routerLinkActive="active">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Cortes del día
+                  </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" [routerLink]="['cortesdeinfo08']">8:00 am</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" [routerLink]="['cortesdeinfo']">12:00 pm</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" [routerLink]="['cortesdeinfo16']">16:00 pm</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" [routerLink]="['cortesdeinfo20']">20:00 pm</a>
+                    </div>
+                </li> -->
+
+
+
+
+
+
+            <li class="nav-item" *ngIf="!identity">
+                <a class="nav-link" [routerLink]="['login']">Login</a>
+            </li>
+
+
+            <li class="nav-item" *ngIf="identity">
+                <a class="nav-link" [routerLink]="['registro']">Registro</a>
+            </li>
+
+
+
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['about']">Contacto</a>
+            </li>
+        </ul>
+
+
+
+        <ul class="navbar-nav navbar-right" *ngIf="identity && identity.name">
+
+            <li *ngIf="identity && identity.image" class="nav-item">
+                <div class="avatar_mask">
+                    <img src="{{url + '/user/getImage/' + identity.image}}" class="avatar_nav">
+                </div>
+            </li>
+
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ identity.name + ' ' + identity.surname}}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" [routerLink]="['/photos']" routerLinkActive="router-link-active">Subir información</a>
+                    <a class="dropdown-item" [routerLink]="['/crearcategoria']" routerLinkActive="router-link-active">Crear categoria</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" [routerLink]="['/perfil', identity.sub]" routerLinkActive="router-link-active">Mi perfil</a>
+                    <a class="dropdown-item" [routerLink]="['/ajustes']" routerLinkActive="router-link-active">Ajustes</a>
+                    <a class="dropdown-item" [routerLink]="['logout/1']">Salir</a>
+
+
+
+
+                </div>
+
+
+
+            </li>
+
+
+
+        </ul>
+
+    </div>
+</nav>

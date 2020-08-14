@@ -1,0 +1,119 @@
+<div class="loading" *ngIf=!category>
+
+    Cargando.....
+</div>
+
+
+
+<div class="container-fluid mt-3 animated fadeIn slow" *ngIf="category">
+    <h1>{{category.name}}
+
+    </h1>
+    <div class="loading animated fadeIn slow" *ngIf=!posts>
+
+        Cargando listado de posts
+    </div>
+
+    <div class="alert alert-warning animated fadeIn slow" *ngIf="posts && posts.length == 0">
+
+        No hay elementos que mostrar
+    </div>
+
+    <div class="card-columns animated fadeIn slow" *ngIf="posts">
+        <article class="card w-100" *ngFor="let post of posts">
+
+            <div class="card-header animated fadeIn slow">
+                <h3>
+                    <a [routerLink]="['/entrada', post.id]"> {{post.title}}</a>
+
+                </h3>
+
+            </div>
+
+            <div class="card-body animated fadeIn slow">
+                
+
+                <div class="post-image w-100" *ngIf="post.image">
+
+                    <img src="{{url+ 'post/image/' + post.image}}" class="w-100">
+                   
+
+                </div>
+
+
+
+                <div class="post-image w-100 animated fadeIn slow" *ngIf="!post.image">
+                    <img
+                        src="https://i.pinimg.com/236x/9a/a8/68/9aa868785a0caeac3002fd03f7f28c42--latin-party-latin-music.jpg">
+
+                </div>
+
+                <div class="post-buttons mt-3 animated fadeIn slow">
+
+                    <a [routerLink]="['/entrada', post.id]" routerLinkActive="router-link-active"
+                        class="btn btn-success mtl-3">Leer</a>
+
+                    <span *ngIf="identity && identity.sub == post.user_id ">
+
+
+
+                        <a [routerLink]="['/editar-entrada', post.id]" routerLinkActive="router-link-active"
+                            class="btn btn-warning ml-3">Editar</a>
+                        <!-- <a (click)="deletePost(post.id)" class="btn btn-danger ml-3" > Borrar</a> -->
+
+                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
+                            data-target="#myModal">Borrar</button>
+
+                        <!-- Modal -->
+                        <div class="modal fade animated fadeIn slow" id="myModal" role="dialog">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-contenta nimated fadeIn slow">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">¿Seguro que quieres borrar esta entrada?</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Esta entrada se borrara permanentemente</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a (click)="deletePost(post.id)" class="btn btn-danger ml-3"
+                                            data-dismiss="modal"> Borrar
+                                        </a>
+
+                                        <button type="button" class="btn btn-default"
+                                            data-dismiss="modal">Close</button>
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </span>
+
+
+                </div>
+
+
+
+
+
+
+            </div>
+
+
+
+        </article>
+
+    </div>
+
+
+    <hr>
+
+</div>
+<br>
+<br>

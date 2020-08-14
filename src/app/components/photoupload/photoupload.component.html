@@ -1,0 +1,637 @@
+<h1>{{page_title}}</h1>
+
+<p>Añade imagenes a los compentes</p>
+<hr>
+
+
+<!-- mensjae sde alerta -->
+
+
+<div class="alert alert-success" *ngIf="status === 'success'">
+    La información se ha completado correctamente!!
+    <hr>
+
+
+    
+</div>
+
+<div class="alert alert-danger" *ngIf="status === 404">
+El registro no se ha completado, intenta nuevamente
+        
+</div> 
+
+<!-- formulario de crear entrada -->
+<form class="col-md5 ml-0 pl-0" #postNew="ngForm" (ngSubmit)="onSubmit(postNew)">
+
+
+    
+    <div class="form-group">
+
+        <label for="title"> Titulo</label>
+        <input type="text" name="title" #title="ngModel" [(ngModel)]="post.title" class="form-control" requiered>
+
+
+        <small *ngIf="!title.valid && title.touched" class="!invalid-feedback d-block">
+            El titulo no es valido
+        </small>
+    </div>
+
+    <div class="form-group">
+        <label for="content">Contenido</label>
+        <textarea [froalaEditor] name="content" content="ngModel"
+        [(ngModel)]="post.content"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="categoriy_id"> Categoría</label><br>
+        <select name="category_id" #category="ngModel" [(ngModel)]="post.category_id" class="form-conrol">
+            <option *ngFor="let category of categories" value="{{category.id}}">
+                {{category.name}}
+            </option>
+        </select>
+    </div>
+
+
+    <div class="form-group">
+        <label for="image">Imagen</label>
+
+        
+
+
+        <angular-file-uploader [config]="afuConfig" (ApiResponse)="imageUpload($event)">
+        </angular-file-uploader>
+    </div>
+
+    <br>
+
+    <input type="submit" value="Guardar" class="btn btn-success" [disabled]="postNew.invalid">
+
+<br>
+<br>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+
+
+
+<div class ="row">
+     <div class="col-md-4">
+
+        <h3> Modelo de predicción
+            <div appNgDropFiles 
+                 [archivos]="archivos"
+            (mouseSobre)="estaSobreElemento0 =$event" [ngClass]="{ 'file-over': estaSobreElemento0 }" class="well drop-zone file-over">
+                <h4>Deje caer aquí los archivos</h4>
+                <img src="../../../assets/img/drop-images.png" alt="" srcset="">
+
+            </div>
+
+        </h3>
+
+     </div>
+
+     <div class="col-md-8">
+
+        <h4>Cargar archivos</h4>
+        <button (click)="cargarImagenes0()" [disabled]="archivos.length == 0" class="btn btn-success">Cargar a base de datos</button>
+        <button (click)="limpiarArchivos()" class="btn btn-danger">Limpiar</button>
+
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Nombre archivo</th>
+                    <th>Tamaño</th>
+                    <th>Progreso</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let archivo of archivos">
+                 <td [ngClass]= "{'text-green': archivo.progreso >= 100}" >{{ archivo.nombreArchivo}}</td>   
+                 <td>{{ archivo.archivo.size / 1024 /1024 | number: '.2-2'}} MB</td>   
+                 <td>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" [ngStyle]=" {'width': archivo.progreso + '%'}" ></div>
+                      </div>
+
+
+                 </td>   
+
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+
+     </div>
+
+
+
+
+
+
+     <div class="col-md-4">
+
+        <h3> Modelo de predicción zona 1
+            <div appNgDropFiles1 
+                 [archivos1]="archivos1"
+            (mouseSobre)="estaSobreElemento1 =$event" [ngClass]="{ 'file-over': estaSobreElemento1 }" class="well drop-zone file-over">
+                <h4>Deje caer aquí los archivos</h4>
+                <img src="../../../assets/img/drop-images.png" alt="" srcset="">
+
+            </div>
+
+        </h3>
+
+     </div>
+
+     <div class="col-md-8">
+
+        <h4>Cargar archivos</h4>
+        <button (click)="cargarImagenes1()" [disabled]="archivos1.length == 0" class="btn btn-success">Cargar a base de datos</button>
+        <button (click)="limpiarArchivos1()" class="btn btn-danger">Limpiar</button>
+
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Nombre archivo</th>
+                    <th>Tamaño</th>
+                    <th>Progreso</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let archivo1 of archivos1">
+                 <td [ngClass]= "{'text-green': archivo1.progreso >= 100}" >{{ archivo1.nombreArchivo}}</td>   
+                 <td>{{ archivo1.archivo.size / 1024 /1024 | number: '.2-2'}} MB</td>   
+                 <td>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" [ngStyle]=" {'width': archivo1.progreso + '%'}" ></div>
+                      </div>
+
+
+                 </td>   
+
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+
+     </div>
+
+
+
+
+     <div class="col-md-4">
+
+        <h3> Modelo de predicción zona 2
+            <div appNgDropFiles2 
+                 [archivos2]="archivos2"
+            (mouseSobre)="estaSobreElemento2 =$event" [ngClass]="{ 'file-over': estaSobreElemento2 }" class="well drop-zone file-over">
+                <h4>Deje caer aquí los archivos</h4>
+                <img src="../../../assets/img/drop-images.png" alt="" srcset="">
+
+            </div>
+
+        </h3>
+
+     </div>
+
+     <div class="col-md-8">
+
+        <h4>Cargar archivos</h4>
+        <button (click)="cargarImagenes2()" [disabled]="archivos2.length == 0" class="btn btn-success">Cargar a base de datos</button>
+        <button (click)="limpiarArchivos2()" class="btn btn-danger">Limpiar</button>
+
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Nombre archivo</th>
+                    <th>Tamaño</th>
+                    <th>Progreso</th>   
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let archivo2 of archivos">
+                 <td [ngClass]= "{'text-green': archivo2.progreso >= 100}" >{{ archivo2.nombreArchivo}}</td>   
+                 <td>{{ archivo2.archivo.size / 1024 /1024 | number: '.2-2'}} MB</td>   
+                 <td>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" [ngStyle]=" {'width': archivo2.progreso + '%'}" ></div>
+                      </div>
+
+
+                 </td>   
+
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+
+     </div>
+
+
+
+
+
+     <div class="col-md-4">
+
+        <h3> Modelo de predicicón zona 3
+            <div appNgDropFiles3 
+                 [archivos3]="archivos3"
+            (mouseSobre)="estaSobreElemento3 =$event" [ngClass]="{ 'file-over': estaSobreElemento3 }" class="well drop-zone file-over">
+                <h4>Deje caer aquí los archivos</h4>
+                <img src="../../../assets/img/drop-images.png" alt="" srcset="">
+
+            </div>
+
+        </h3>
+
+     </div>
+
+     <div class="col-md-8">
+
+        <h4>Cargar archivos</h4>
+        <button (click)="cargarImagenes3()" [disabled]="archivos3.length == 0" class="btn btn-success">Cargar a base de datos</button>
+        <button (click)="limpiarArchivos3()" class="btn btn-danger">Limpiar</button>
+
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Nombre archivo</th>
+                    <th>Tamaño</th>
+                    <th>Progreso</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let archivo3 of archivos3">
+                 <td [ngClass]= "{'text-green': archivo3.progreso >= 100}" >{{ archivo3.nombreArchivo}}</td>   
+                 <td>{{ archivo3.archivo.size / 1024 /1024 | number: '.2-2'}} MB</td>   
+                 <td>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" [ngStyle]=" {'width': archivo3.progreso + '%'}" ></div>
+                      </div>
+
+
+                 </td>   
+
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+
+     </div>
+
+
+
+
+     <div class="col-md-4">
+
+        <h3> Modelo de predicción zona 4
+            <div appNgDropFiles4 
+                 [archivos4]="archivos4"
+            (mouseSobre)="estaSobreElemento4 =$event" [ngClass]="{ 'file-over': estaSobreElemento4 }" class="well drop-zone file-over">
+                <h4>Deje caer aquí los archivos</h4>
+                <img src="../../../assets/img/drop-images.png" alt="" srcset="">
+
+            </div>
+
+        </h3>
+
+     </div>
+
+     <div class="col-md-8">
+
+        <h4>Cargar archivos</h4>
+        <button (click)="cargarImagenes4()" [disabled]="archivos4.length == 0" class="btn btn-success">Cargar a base de datos</button>
+        <button (click)="limpiarArchivos4()" class="btn btn-danger">Limpiar</button>
+
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Nombre archivo</th>
+                    <th>Tamaño</th>
+                    <th>Progreso</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let archivo4 of archivos4">
+                 <td [ngClass]= "{'text-green': archivo4.progreso >= 100}" >{{ archivo4.nombreArchivo}}</td>   
+                 <td>{{ archivo4.archivo.size / 1024 /1024 | number: '.2-2'}} MB</td>   
+                 <td>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" [ngStyle]=" {'width': archivo4.progreso + '%'}" ></div>
+                      </div>
+
+
+                 </td>   
+
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+
+     </div>
+
+
+
+
+ <div class="col-md-4">
+
+        <h3> Incendios confirmados
+            <div appNgDropFiles5 
+                 [archivos5]="archivos5"
+            (mouseSobre)="estaSobreElemento5 =$event" [ngClass]="{ 'file-over': estaSobreElemento5 }" class="well drop-zone file-over">
+                <h4>Deje caer aquí los archivos</h4>
+                <img src="../../../assets/img/drop-images.png" alt="" srcset="">
+
+            </div>
+
+        </h3>
+
+     </div>
+
+     <div class="col-md-8">
+
+        <h4>Cargar archivos</h4>
+        <button (click)="cargarImagenes5()" [disabled]="archivos5.length == 0" class="btn btn-success">Cargar a base de datos</button>
+        <button (click)="limpiarArchivos5()" class="btn btn-danger">Limpiar</button>
+
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Nombre archivo</th>
+                    <th>Tamaño</th>
+                    <th>Progreso</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let archivo5 of archivos5">
+                 <td [ngClass]= "{'text-green': archivo5.progreso >= 100}" >{{ archivo5.nombreArchivo}}</td>   
+                 <td>{{ archivo5.archivo.size / 1024 /1024 | number: '.2-2'}} MB</td>   
+                 <td>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" [ngStyle]=" {'width': archivo5.progreso + '%'}" ></div>
+                      </div>
+
+
+                 </td>   
+
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+
+     </div>
+
+
+
+
+    
+
+
+     <div class="col-md-4">
+
+        <h3> Cortes del día 8:00 am
+            <div appNgDropFiles6 
+                 [archivos6]="archivos6"
+            (mouseSobre)="estaSobreElemento6 =$event" [ngClass]="{ 'file-over': estaSobreElemento6 }" class="well drop-zone file-over">
+                <h4>Deje caer aquí los archivos</h4>
+                <img src="../../../assets/img/drop-images.png" alt="" srcset="">
+
+            </div>
+
+        </h3>
+
+     </div>
+
+     <div class="col-md-8">
+
+        <h4>Cargar archivos</h4>
+        <button (click)="cargarImagenes6()" [disabled]="archivos6.length == 0" class="btn btn-success">Cargar a base de datos</button>
+        <button (click)="limpiarArchivos6()" class="btn btn-danger">Limpiar</button>
+
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Nombre archivo</th>
+                    <th>Tamaño</th>
+                    <th>Progreso</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let archivo6 of archivos6">
+                 <td [ngClass]= "{'text-green': archivo6.progreso >= 100}" >{{ archivo6.nombreArchivo}}</td>   
+                 <td>{{ archivo6.archivo.size / 1024 /1024 | number: '.2-2'}} MB</td>   
+                 <td>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" [ngStyle]=" {'width': archivo6.progreso + '%'}" ></div>
+                      </div>
+
+
+                 </td>   
+
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+
+     </div>
+
+
+
+
+     <div class="col-md-4">
+
+        <h3> Cortes del día 12:00 pm
+            <div appNgDropFiles7 
+                 [archivos7]="archivos7"
+            (mouseSobre)="estaSobreElemento7 =$event" [ngClass]="{ 'file-over': estaSobreElemento7 }" class="well drop-zone file-over">
+                <h4>Deje caer aquí los archivos</h4>
+                <img src="../../../assets/img/drop-images.png" alt="" srcset="">
+
+            </div>
+
+        </h3>
+
+     </div>
+
+     <div class="col-md-8">
+
+        <h4>Cargar archivos</h4>
+        <button (click)="cargarImagenes7()" [disabled]="archivos7.length == 0" class="btn btn-success">Cargar a base de datos</button>
+        <button (click)="limpiarArchivos7()" class="btn btn-danger">Limpiar</button>
+
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Nombre archivo</th>
+                    <th>Tamaño</th>
+                    <th>Progreso</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let archivo7 of archivos7">
+                 <td [ngClass]= "{'text-green': archivo7.progreso >= 100}" >{{ archivo7.nombreArchivo}}</td>   
+                 <td>{{ archivo7.archivo.size / 1024 /1024 | number: '.2-2'}} MB</td>   
+                 <td>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" [ngStyle]=" {'width': archivo7.progreso + '%'}" ></div>
+                      </div>
+
+
+                 </td>   
+
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+
+     </div>
+
+
+
+
+     <div class="col-md-4">
+
+        <h3> Cortes del día 4:00 pm
+            <div appNgDropFiles8 
+                 [archivos8]="archivos8"
+            (mouseSobre)="estaSobreElemento8 =$event" [ngClass]="{ 'file-over': estaSobreElemento8 }" class="well drop-zone file-over">
+                <h4>Deje caer aquí los archivos</h4>
+                <img src="../../../assets/img/drop-images.png" alt="" srcset="">
+
+            </div>
+
+        </h3>
+
+     </div>
+
+     <div class="col-md-8">
+
+        <h4>Cargar archivos</h4>
+        <button (click)="cargarImagenes8()" [disabled]="archivos8.length == 0" class="btn btn-success">Cargar a base de datos</button>
+        <button (click)="limpiarArchivos8()" class="btn btn-danger">Limpiar</button>
+
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Nombre archivo</th>
+                    <th>Tamaño</th>
+                    <th>Progreso</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let archivo8 of archivos8">
+                 <td [ngClass]= "{'text-green': archivo8.progreso >= 100}" >{{ archivo8.nombreArchivo}}</td>   
+                 <td>{{ archivo8.archivo.size / 1024 /1024 | number: '.2-2'}} MB</td>   
+                 <td>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" [ngStyle]=" {'width': archivo8.progreso + '%'}" ></div>
+                      </div>
+
+
+                 </td>   
+
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+
+     </div>
+
+
+     <div class="col-md-4">
+
+        <h3> Cortes del día 8:00pm
+            <div appNgDropFiles9 
+                 [archivos9]="archivos9"
+            (mouseSobre)="estaSobreElemento9 =$event" [ngClass]="{ 'file-over': estaSobreElemento9 }" class="well drop-zone file-over">
+                <h4>Deje caer aquí los archivos</h4>
+                <img src="../../../assets/img/drop-images.png" alt="" srcset="">
+
+            </div>
+
+        </h3>
+
+     </div>
+
+     <div class="col-md-8">
+
+        <h4>Cargar archivos</h4>
+        <button (click)="cargarImagenes9()" [disabled]="archivos9.length == 0" class="btn btn-success">Cargar a base de datos</button>
+        <button (click)="limpiarArchivos9()" class="btn btn-danger">Limpiar</button>
+
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Nombre archivo</th>
+                    <th>Tamaño</th>
+                    <th>Progreso</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let archivo9 of archivos9">
+                 <td [ngClass]= "{'text-green': archivo9.progreso >= 100}" >{{ archivo9.nombreArchivo}}</td>   
+                 <td>{{ archivo9.archivo.size / 1024 /1024 | number: '.2-2'}} MB</td>   
+                 <td>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" [ngStyle]=" {'width': archivo9.progreso + '%'}" ></div>
+                      </div>
+
+
+                 </td>   
+
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+
+     </div>
+
+
+
+
+</div> -->

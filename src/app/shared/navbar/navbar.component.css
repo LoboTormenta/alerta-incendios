@@ -1,0 +1,120 @@
+.navbar-default {
+    background-color: #3e5e33;
+    border-color: #3e5e33;
+}
+
+.navbar-default .navbar-brand {
+    color: #d7e2e9;
+}
+
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: #e5dbdb;
+}
+
+.navbar-default .navbar-text {
+    color: #d7e2e9;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #d7e2e9;
+}
+
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-nav>li>a:focus {
+    color: #e5dbdb;
+}
+
+.navbar-default .navbar-nav>li>.dropdown-menu {
+    background-color: #3e5e33;
+    font-family: 'Roboto', sans-serif;
+    font-size: 89%;
+}
+
+.navbar-default .navbar-nav>li>.dropdown-menu>li>a {
+    color: #d7e2e9;
+}
+
+.navbar-default .navbar-nav>li>.dropdown-menu>li>a:hover,
+.navbar-default .navbar-nav>li>.dropdown-menu>li>a:focus {
+    color: #e5dbdb;
+    background-color: #6B8E23;
+}
+
+.navbar-default .navbar-nav>li>.dropdown-menu>li>.divider {
+    background-color: #6B8E23;
+}
+
+.navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav>.active>a:hover,
+.navbar-default .navbar-nav>.active>a:focus {
+    color: #e5dbdb;
+    
+}
+
+.navbar-default .navbar-nav>.open>a,
+.navbar-default .navbar-nav>.open>a:hover,
+.navbar-default .navbar-nav>.open>a:focus {
+    color: #e5dbdb;
+    background-color: #6B8E23;
+}
+
+.navbar-default .navbar-toggler {
+    border-color: #ffffff;
+}
+
+.navbar-default .navbar-toggler:hover,
+.navbar-default .navbar-toggler:focus {
+    background-color: #6B8E23;
+}
+
+.navbar-default .navbar-toggler .icon-bar {
+    background-color: #d7e2e9;
+}
+
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+    border-color: #d7e2e9;
+}
+
+.navbar-default .navbar-link {
+    color: #d7e2e9;
+}
+
+.navbar-default .navbar-link:hover {
+    color: #e5dbdb;
+}
+
+@media (max-width: 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a {
+        color: #d7e2e9;
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover,
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a:focus {
+        color: #e5dbdb;
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu>.active>a,
+    .navbar-default .navbar-nav .open .dropdown-menu>.active>a:hover,
+    .navbar-default .navbar-nav .open .dropdown-menu>.active>a:focus {
+        color: #e5dbdb;
+        background-color: #6B8E23;
+    }
+}
+
+.dropdown-item {
+    color: #e5dbdb;
+}
+
+.nav-item {
+    font-family: 'Roboto', sans-serif;
+    font-size: 89%;
+}
+
+.navbar-toggler-icon {
+    background-image: url("toggler.svg");
+  }
+  a{
+font-family:'Open Sans', sans-serif;
+font-size: 75%;
+
+  }

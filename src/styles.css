@@ -1,0 +1,107 @@
+.body {
+    padding-bottom: 50px;
+}
+
+.main-container {
+    margin-top: 20px;
+}
+
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.fast {
+    -webkit-animation-duration: 0.4s;
+    animation-duration: 0.4s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fadeIn {
+    animation-name: fadeIn;
+}
+
+.main-container{
+    margin-top: 40px;
+  }
+  
+  /* Drop Zone */
+  .drop-zone { 
+      border: dotted 3px lightgray; 
+      opacity: 0.5; 
+      color: #666; 
+      text-align: center 
+  }
+  
+  .file-over { 
+      border: dotted 3px dodgerblue; 
+  }
+  
+  .table { 
+      margin-top: 30px; 
+  }
+  
+  .text-green { 
+      color: green 
+  }
+  
+
+  .avatar_edit{
+    width: 80px;
+    margin-bottom: 10px;
+}
+
+.avatar_mask{
+    width: 40px;
+    height: 40px;
+    border-radius: 900px;
+   overflow: hidden;
+}
+
+
+.avatar_mask img{
+    width: 40px;
+   
+}
+.card-header a{
+
+    color: #4444;
+}
+
+.post-image{
+    height: 200px;
+    overflow: hidden;
+}
+
+
+h1{
+    font-family: 'Montserrat', sans-serif;
+    font-size:  24px;
+}
+
+h2{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+}
+h3{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 11px;
+} 
+
+p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 17px;
+
+}
