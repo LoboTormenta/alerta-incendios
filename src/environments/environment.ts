@@ -5,7 +5,7 @@
 export const environment = {
   production: true,
 
-  apiUrl : 'http://192.168.100.84/servicio-social/backEnd/public/',
+  apiUrl : './backEnd/public/',
 
   firebase: {
     apiKey: 'AIzaSyBU5p00Q7nm6JUw4aF4LxAFsRA-ROB3Kts',
